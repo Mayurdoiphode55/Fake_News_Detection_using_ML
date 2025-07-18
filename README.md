@@ -1,91 +1,73 @@
-Fake News Detection using Machine Learning
-Overview
-This project aims to develop a machine learning-based system to identify and classify news articles as Fake or Real. Given the potential societal harm caused by misinformation, this tool provides an automated, reliable way to evaluate news authenticity. It leverages multiple classifiers to enhance prediction accuracy.
-System Highlights
-Implements four classification techniques:
-Logistic Regression
-Decision Tree Classifier
-Gradient Boosting Classifier
-Random Forest Classifier
-Preprocesses textual data using TF-IDF vectorization.
-Provides a user-friendly Streamlit web interface for quickfake news classification.
-Trains and saves models as pickle files (model.pkl, tfidf.pkl) for deployment.
-Supports flexible handling of large model files through options like Git LFS or external hosting.
-Dataset
-Contains labeled news articles, divided into:
-True: Authentic news
-Fake: Fabricated or misleading news
-Ensure you extract and place Fake.csv and True.csv in your project directory before training.
-Dependencies
-Install the required Python libraries:
-bash
-pip install pandas numpy scikit-learn seaborn matplotlib streamlit
-Optionally, for large model files, consider using Git Large File Storage (LFS).
-Setup & Usage
-1. Clone the GitHub repository
-bash
-git clone https://github.com/yourusername/Fake-News-Detection.git
-cd Fake-News-Detection
-2. Prepare the dataset
-Extract your datasets (e.g., from ZIP or other sources).
-Place Fake.csv and True.csv into your project folder.
-3. Train the models
-To train and save models for deployment:
-bash
-python model_trainer.py
-This script loads datasets, preprocesses data, trains models (Logistic Regression, Decision Tree, Gradient Boosting, Random Forest), and saves them as model.pkl and tfidf.pkl.
-4. Run the Streamlit app
-For an interactive prediction dashboard:
-bash
-python -m streamlit run app.py
-Note: If streamlit is not recognized, use:
-bash
-python -m streamlit run app.py
-Handling Large Model Files
-If your model files (model.pkl, tfidf.pkl) exceed GitHub's size limits, consider:
-Using Git Large File Storage (LFS):
-Install with: git lfs install
-Track files:
-bash
-git lfs track "*.pkl"
-Commit and push as usual.
-External hosting:
-Store files in cloud storage (e.g., Google Drive, Dropbox).
-Download dynamically within app.py at runtime.
-Model Training & Deployment Workflow
-Train models:
-bash
-python model_trainer.py
-Ensure model files (model.pkl, tfidf.pkl) are in your project directory or accessible via LFS/external storage.
-Launch the app:
-bash
-python -m streamlit run app.py
-Project Directory Structure
-text
-Fake-News-Detection/
-│
-├── app.py                  # Streamlit app for real-time prediction
-├── model_trainer.py        # Script to train ML models
-├── requirements.txt        # Required dependencies
-├── Fake.csv                # Fake news dataset
-├── True.csv                # True news dataset
-├── model.pkl               # Trained classifier (or Git LFS/tracked)
-└── tfidf.pkl               # TF-IDF vectorizer
-Additional Notes
-Model Evaluation: Your trained models' performance metrics (accuracy, precision, recall, F1-score) are generated during training and should be included in your project reports.
-Model Re-training: Re-run model_trainer.py after updating your datasets to generate new models.
-Deployment: The Streamlit app (app.py) reads the saved models to perform on-the-fly classification of input news articles.
-Contribution & Customization
-Feel free to extend the system:
-Add more classifiers
-Improve preprocessing
-Incorporate multi-language support
-Deploy on cloud platforms (Heroku, Streamlit Cloud, etc.)
-Summary
-This updated README captures:
-Your multi-classifier approach
-Model training process
-Deployment instructions with model file handling strategies
-Usage of Streamlit for interactive dashboard
-Structure for easy setup and execution
-Let me know if you'd like me to generate specific sections, add images, or customize further!
+Fake News Detection Project
+A machine learning solution to automatically classify news articles as real or fake, helping combat the spread of misinformation.
+
+🚀 Project Overview
+Fake news poses serious risks to society by spreading false information rapidly online. This project trains, evaluates, and deploys a suite of machine learning classifiers to distinguish genuine news from fabricated content. You can reproduce the results, retrain models on new data, and explore each classifier’s performance metrics.
+
+📂 Repository Structure
+<img width="1488" height="966" alt="image" src="https://github.com/user-attachments/assets/cacfdf00-5138-47b1-9873-09ac3ea9a5c0" />
+
+
+🔧 System Requirements
+Hardware
+≥ 4 GB RAM
+Dual-core CPU (e.g., Intel i3 or equivalent)
+≥ 500 MB free disk space
+
+Software
+Windows, macOS, or Linux
+Anaconda (optional) or Python 3.8+
+
+📦 Dependencies
+Install via pip:
+<img width="1374" height="172" alt="image" src="https://github.com/user-attachments/assets/9f7a6b0f-3da4-4dbb-b991-2cfa1927a169" />
+
+Contents of requirements.txt:
+
+<img width="1300" height="454" alt="image" src="https://github.com/user-attachments/assets/c04f4438-8cb1-4468-ab6c-91ff46714a81" />
+
+🛠️ Setup & Usage
+Clone the repository
+<img width="1292" height="223" alt="image" src="https://github.com/user-attachments/assets/76426337-a06d-417c-944a-a0d8cfcc4319" />
+
+Prepare data
+Ensure data/Fake.csv and data/True.csv are present.
+
+Train models
+<img width="1332" height="178" alt="image" src="https://github.com/user-attachments/assets/1b2b57ea-3e79-4e03-bed3-a3f7b873d489" />
+
+This script will:
+Load and preprocess data (tokenization, cleaning)
+Fit a TF-IDF vectorizer
+1.Train four classifiers:
+.Logistic Regression
+3.Decision Tree
+4.Gradient Boosting
+5.Random Forest
+Evaluate each model (accuracy, precision, recall, F1-score)
+Save the best model and TF-IDF vectorizer to models/
+
+Explore results
+Open notebooks/EDA_and_Results.ipynb to view performance dashboards, confusion matrices, and detailed metrics.
+
+Run the Streamlit dashboard
+<img width="1290" height="174" alt="image" src="https://github.com/user-attachments/assets/97f79751-fffa-43dd-ba4b-99a3cf6a5fad" />
+
+Enter or paste a news article/headline
+View live classification and confidence score
+
+If dashboard reports missing model files, run python src/model_trainer.py first.
+
+📊 Evaluation Metrics
+<img width="1468" height="392" alt="image" src="https://github.com/user-attachments/assets/4a1c9fb0-a4d3-4453-94fa-308731a36fb9" />
+Metrics computed on held-out test set.
+
+🔄 Model Management
+Direct GitHub upload: Suitable if model.pkl & tfidf.pkl < 100 MB.
+Git LFS: For larger files—track .pkl files via Git LFS.
+External storage: Use src/download_models.py to fetch artifacts at runtime.
+
+💡 Best Practices
+Re-train regularly with updated news data.
+Monitor model drift; evaluate performance on new samples.
+Extend the pipeline with additional feature engineering (e.g., named-entity recognition).
