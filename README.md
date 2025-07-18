@@ -1,77 +1,91 @@
-# Fake News Detection Project
-The project aims to develop a machine-learning model capable of identifying and classifying any news article as fake or not. The distribution of fake news can potentially have highly adverse effects on people and culture. This project involves building and training a model to classify news as fake news or not using a diverse dataset of news articles. We have used four techniques to determine the results of the model.
-
-1. **Logistic Regression**
-2. **Decision Tree Classifier**
-3. **Gradient Boost Classifier**
-4. **Random Forest Classifier**
-
-## Project Overview
-
-Fake news has become a significant issue in today's digital age, where information spreads rapidly through various online platforms. This project leverages machine learning algorithms to automatically determine the authenticity of news articles, providing a valuable tool to combat misinformation.
-
-## Dataset
-
-We have used a labelled dataset containing news articles along with their corresponding labels (true or false). The dataset is divided into two classes:
-- True: Genuine news articles
-- False: Fake or fabricated news articles
-
-## System Requirements 
-
-Hardware :
-1. 4GB RAM
-2. i3 Processor
-3. 500MB free space
-
-Software :
-1. Anaconda
-2. Python
-
-## Dependencies
-
-Before running the code, make sure you have the following libraries and packages installed:
-
-- Python 3
-- Scikit-learn
-- Pandas
-- Numpy
-- Seaborn
-- Matplotlib
-- Regular Expression
-
-You can install these dependencies using pip:
-
-```bash
-pip install pandas
-pip install numpy
-pip install matplotlib
-pip install sklearn
-pip install seaborn 
-pip install re 
-```
-
-## Usage
-
-1. Clone this repository to your local machine:
-
-```bash
-git clone https://github.com/kapilsinghnegi/Fake-News-Detection.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd fake-news-detection
-```
-
-3. Execute the Jupyter Notebook or Python scripts associated with each classifier to train and test the models. For example:
-
-```bash
-python random_forest_classifier.py
-```
-
-4. The code will produce evaluation metrics and provide a prediction for whether the given news is true or false based on the trained model.
-
-## Results
-
-We evaluated each classifier's performance using metrics such as accuracy, precision, recall, and F1 score. The results are documented in the project files.
+Fake News Detection using Machine Learning
+Overview
+This project aims to develop a machine learning-based system to identify and classify news articles as Fake or Real. Given the potential societal harm caused by misinformation, this tool provides an automated, reliable way to evaluate news authenticity. It leverages multiple classifiers to enhance prediction accuracy.
+System Highlights
+Implements four classification techniques:
+Logistic Regression
+Decision Tree Classifier
+Gradient Boosting Classifier
+Random Forest Classifier
+Preprocesses textual data using TF-IDF vectorization.
+Provides a user-friendly Streamlit web interface for quickfake news classification.
+Trains and saves models as pickle files (model.pkl, tfidf.pkl) for deployment.
+Supports flexible handling of large model files through options like Git LFS or external hosting.
+Dataset
+Contains labeled news articles, divided into:
+True: Authentic news
+Fake: Fabricated or misleading news
+Ensure you extract and place Fake.csv and True.csv in your project directory before training.
+Dependencies
+Install the required Python libraries:
+bash
+pip install pandas numpy scikit-learn seaborn matplotlib streamlit
+Optionally, for large model files, consider using Git Large File Storage (LFS).
+Setup & Usage
+1. Clone the GitHub repository
+bash
+git clone https://github.com/yourusername/Fake-News-Detection.git
+cd Fake-News-Detection
+2. Prepare the dataset
+Extract your datasets (e.g., from ZIP or other sources).
+Place Fake.csv and True.csv into your project folder.
+3. Train the models
+To train and save models for deployment:
+bash
+python model_trainer.py
+This script loads datasets, preprocesses data, trains models (Logistic Regression, Decision Tree, Gradient Boosting, Random Forest), and saves them as model.pkl and tfidf.pkl.
+4. Run the Streamlit app
+For an interactive prediction dashboard:
+bash
+python -m streamlit run app.py
+Note: If streamlit is not recognized, use:
+bash
+python -m streamlit run app.py
+Handling Large Model Files
+If your model files (model.pkl, tfidf.pkl) exceed GitHub's size limits, consider:
+Using Git Large File Storage (LFS):
+Install with: git lfs install
+Track files:
+bash
+git lfs track "*.pkl"
+Commit and push as usual.
+External hosting:
+Store files in cloud storage (e.g., Google Drive, Dropbox).
+Download dynamically within app.py at runtime.
+Model Training & Deployment Workflow
+Train models:
+bash
+python model_trainer.py
+Ensure model files (model.pkl, tfidf.pkl) are in your project directory or accessible via LFS/external storage.
+Launch the app:
+bash
+python -m streamlit run app.py
+Project Directory Structure
+text
+Fake-News-Detection/
+│
+├── app.py                  # Streamlit app for real-time prediction
+├── model_trainer.py        # Script to train ML models
+├── requirements.txt        # Required dependencies
+├── Fake.csv                # Fake news dataset
+├── True.csv                # True news dataset
+├── model.pkl               # Trained classifier (or Git LFS/tracked)
+└── tfidf.pkl               # TF-IDF vectorizer
+Additional Notes
+Model Evaluation: Your trained models' performance metrics (accuracy, precision, recall, F1-score) are generated during training and should be included in your project reports.
+Model Re-training: Re-run model_trainer.py after updating your datasets to generate new models.
+Deployment: The Streamlit app (app.py) reads the saved models to perform on-the-fly classification of input news articles.
+Contribution & Customization
+Feel free to extend the system:
+Add more classifiers
+Improve preprocessing
+Incorporate multi-language support
+Deploy on cloud platforms (Heroku, Streamlit Cloud, etc.)
+Summary
+This updated README captures:
+Your multi-classifier approach
+Model training process
+Deployment instructions with model file handling strategies
+Usage of Streamlit for interactive dashboard
+Structure for easy setup and execution
+Let me know if you'd like me to generate specific sections, add images, or customize further!
