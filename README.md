@@ -1,4 +1,4 @@
-Fake News Detection Project
+## Fake News Detection Project ##
 A machine learning solution to automatically classify news articles as real or fake, helping combat the spread of misinformation.
 
 🚀 Project Overview
